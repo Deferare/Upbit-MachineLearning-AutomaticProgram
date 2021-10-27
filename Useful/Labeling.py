@@ -1,5 +1,4 @@
 
-# 캔들 장대 양음봉 판별.
 # 장대 양봉이면 U1, 장대 음봉이면 D1, 그 외 -1 반환.
 def myLabeling(S, H, L, E): # 시가 고가 저가 종가.
     up_down_state = E - S

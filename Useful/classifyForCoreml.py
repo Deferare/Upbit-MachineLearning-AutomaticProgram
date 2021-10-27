@@ -1,21 +1,18 @@
-import pandas as pd
-
 # 로컬에있는 데이터를 애플 createML에 학습하기 좋게 변환해서 저장하는 파일.
 
-import matplotlib.pyplot as plt
+import sys
 import numpy as np
 import pandas as pd
 from PIL import Image
-import sys
 sys.setrecursionlimit(100000)
 
-lable_path = "/Users/ubinyou/Documents/Task/Upbit-MachineLearning-AutomaticProgram/data/minute_5_lable.xlsx"
+lable_path = "/Model/data/minute_5_lable.xlsx"
 labels = pd.read_excel(lable_path)
 labels = np.array(labels[10000:]).reshape(-1,)
 print(len(labels))
 images = []
 for i in range(10000, len(labels)+10000):
-    image_path = f"/Users/ubinyou/Documents/Task/Upbit-MachineLearning-AutomaticProgram/data/minute_5/{i}.jpg"
+    image_path = f"/Model/data/minute_5/{i}.jpg"
     image = Image.open(image_path)
     images.append(image)
 
