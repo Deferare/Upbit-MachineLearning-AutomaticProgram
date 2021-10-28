@@ -1,4 +1,4 @@
-# 로컬에있는 데이터를 애플 createML에 학습하기 좋게 변환해서 저장하는 파일.
+# 로컬에있는 데이터를 애플 createML에 학습하기 좋게 변환해서 저장하는 코드.
 
 import sys
 import numpy as np

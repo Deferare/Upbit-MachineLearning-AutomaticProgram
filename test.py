@@ -45,10 +45,20 @@ import sys, os, pyupbit
 # print(cnt_2)
 import time, datetime
 
-df = pyupbit.get_ohlcv(ticker="KRW-BTC", interval="minute5", count=50)
-t = time.localtime()
-crnt_time = datetime.datetime(t.tm_year, t.tm_mon, t.tm_mday, t.tm_hour, t.tm_min)
-print(df.info())
-print(df)
+df = pyupbit.get_ohlcv(ticker="KRW-BTC", interval="minute5", count=10)
+df = df.drop(columns=["volume", "value"])
+arr = []
+times = list(df.iloc[:,[]].index)
+for i in range(len(df)):
+    _push = []
+    for j in range(4):
+        _push.append(df.iloc[i,j])
+    arr.append(_push)
 
-print(crnt_time)
+print()
+print(df)
+print(len(arr))
+print(arr)
+print()
+print(len(times))
+print(times)
