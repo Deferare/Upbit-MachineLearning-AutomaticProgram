@@ -21,7 +21,7 @@ def myLabeling(S, H, L, E): # 시가 고가 저가 종가.
         answer = "U"
     else:
         answer = "D"
-    if body >= 1:
+    if body >= 0.5:
         answer += '1'
     else:
         answer = "-1"
