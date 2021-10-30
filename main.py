@@ -7,7 +7,7 @@ from collections import deque
 from Useful.learnDataSave import getImage
 from Useful.AutoSale import upbitSale2
 
-image_excute_path = "/Users/ubinyou/Documents/Task/Upbit-MachineLearning-AutomaticProgram/Model/data/execute/" # 실시간 예측 차트 담길 폴더.
+image_excute_path = "/Users/ubinyou/Documents/Task/Upbit-MachineLearning-AutomaticProgram/execute/" # 실시간 예측 차트 담길 폴더.
 model_path = "/Users/ubinyou/Documents/Task/Upbit-MachineLearning-AutomaticProgram/Model/minut5_20c3s/3/myModel.h5" # 사용 할 모델.
 
 async def upbit_client():
