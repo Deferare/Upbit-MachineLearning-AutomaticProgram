@@ -6,24 +6,35 @@ import pandas as pd
 from PIL import Image
 sys.setrecursionlimit(100000)
 
-lable_path = "/Model/data/minute_5_lable.xlsx"
-labels = pd.read_excel(lable_path)
-labels = np.array(labels[10000:]).reshape(-1,)
-print(len(labels))
+tickers = ["BTC", "ETH","ADA", "XRP", "DOGE", "DOT"]
+labels = pd.DataFrame()
+images_len = []
+for ticker in tickers:
+    lable_path = f"/Users/ubinyou/Documents/Task/Upbit-MachineLearning-AutomaticProgram/Model/data/({ticker})minut5_20c3s/labels.xlsx"
+    labels_sub = pd.read_excel(lable_path)
+    images_len.append(len(labels_sub))
+    labels = pd.concat([labels, labels_sub])
+labels = np.array(labels).reshape(-1,)
+print("len(labels) : ",len(labels))
 images = []
-for i in range(10000, len(labels)+10000):
-    image_path = f"/Model/data/minute_5/{i}.jpg"
-    image = Image.open(image_path)
-    images.append(image)
+for ticker in tickers:
+    ln = images_len.pop(0)
+    print(ln)
+    for i in range(ln):
+        image_path = f"/Users/ubinyou/Documents/Task/Upbit-MachineLearning-AutomaticProgram/Model/data/({ticker})minut5_20c3s/{i}.jpg"
+        image = Image.open(image_path)
+        image = Image.Image.resize(image,(128,64))
+        images.append(image)
+print("len(images) : ",len(images))
 
 print(len(images))
 index_a = 0
 index_b = 0
 for i in range(len(labels)):
     if labels[i] == 0:
-        savePath = f"/Users/ubinyou/Documents/Task/Upbit-MachineLearning-AutomaticProgram/data/CoreMLData/minute_5/Test/{labels[i]}/{index_a}.jpg"
+        savePath = f"/Users/ubinyou/Desktop/codeML/Train/{labels[i]}/{index_a}.jpg"
         index_a += 1
     else:
-        savePath = f"/Users/ubinyou/Documents/Task/Upbit-MachineLearning-AutomaticProgram/data/CoreMLData/minute_5/Test/{labels[i]}/{index_b}.jpg"
+        savePath = f"/Users/ubinyou/Desktop/codeML/Train/{labels[i]}/{index_b}.jpg"
         index_b += 1
     Image.Image.save(images[i], savePath)

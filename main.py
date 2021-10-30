@@ -66,7 +66,7 @@ async def upbit_client():
                     result = model.predict(image)
                     upbitSale2(result[0])
                     print("result : ", result[0], end="\n\n")
-                    for _ in range(2): # 모델 실행 후 앞에 캔들 N개 뺌. (그러면 5분xN개분 뒤에 다시 예측.)
+                    for _ in range(1): # 모델 실행 후 앞에 캔들 N개 뺌. (그러면 5분xN개분 뒤에 다시 예측.)
                         datas.popleft()
                         times.popleft()
 
