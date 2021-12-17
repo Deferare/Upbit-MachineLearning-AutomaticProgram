@@ -1,3 +1,5 @@
+
+
 import pyupbit, matplotlib
 import pandas as pd
 import numpy as np
@@ -5,7 +7,6 @@ import mplfinance as mpf
 from PIL import Image
 from Useful.Labeling import myLabeling
 matplotlib.use("Agg")
-
 
 # Chart save options.
 rc = {
@@ -27,11 +28,11 @@ save = dict(dpi=150, transparent=True, bbox_inches='tight', facecolor="black")
 
 # If one candle meets the condition,
 # save the corresponding candle as a label and the chart of the preceding n candles in the corresponding candle as a feature image.
+pre_n = 400000
 def learnDataSave(ticker,path_base, n): # path_base = Directory.
-    df = pyupbit.get_ohlcv(ticker=ticker, interval="minute5", count=527385) # 4xx385 max.
+    df = pyupbit.get_ohlcv(ticker=ticker, interval="minute5", count=pre_n) # 4xx385 max.
     one = 0; zero = 0
     df.info()
-    print()
     labeling_data = []
     name_i = 0
     i = n
@@ -76,8 +77,10 @@ def getImage(datas, image_path):
 
 # -------------------------------- Excution phrase.
 
-# tickers = ["KRW-BTC", "KRW-ETH","KRW-ADA", "KRW-XRP", "KRW-DOGE", "KRW-DOT"]
-# for ticker in tickers:
-#     t = ticker[4:]
-#     path = f"/Users/ubinyou/Documents/Task/Upbit-MachineLearning-AutomaticProgram/Model/data/({t})minut5_20c3s/"
-#     learnDataSave(ticker, path, 20)
+tickers = ["KRW-BTC", "KRW-ETH","KRW-ADA", "KRW-XRP", "KRW-DOGE", "KRW-DOT"]
+for ticker in tickers:
+    print()
+    t = ticker[4:]
+    # path = f"/Users/ubinyou/Documents/Task/Upbit-MachineLearning-AutomaticProgram/Model/data/({t})minut5_20c3s/"
+    path = f"/Users/deforeturn/Documents/Data/test/({t})minut5_20c3s/"
+    learnDataSave(ticker, path, 20)

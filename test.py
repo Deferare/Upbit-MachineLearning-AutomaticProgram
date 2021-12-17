@@ -17,14 +17,14 @@ n = 96
 seed = 0
 images = []
 for i in range(seed,n+seed):
-    image_path = f"/Users/ubinyou/Documents/Task/Upbit-MachineLearning-AutomaticProgram/Model/data/(BTC)minut5_20c3s/{i}.jpg"
+    image_path = f"/Users/deforeturn/Github/Upbit-MachineLearning-AutomaticProgram/Model/data/(BTC)minut5_20c3s/{i}.jpg"
     image = Image.open(image_path)
     image = Image.Image.resize(image,(128,64))
     images.append(np.array(image)/255)
 
 images = np.array(images)
 #
-model_path = "/Users/ubinyou/Documents/Task/Upbit-MachineLearning-AutomaticProgram/Model/minut5_20c3s/3/myModel.h5"
+model_path = "/Users/deforeturn/Github/Upbit-MachineLearning-AutomaticProgram/Model/minut5_20c3s/3/myModel.h5"
 model = keras.models.load_model(model_path)
 
 
